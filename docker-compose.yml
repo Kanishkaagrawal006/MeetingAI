@@ -1,0 +1,57 @@
+services:
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: meetings-postgres
+    environment:
+      POSTGRES_DB: meetings
+      POSTGRES_USER: meetings_user
+      POSTGRES_PASSWORD: meetings_pass
+    ports:
+      - "5439:5432"
+    volumes:
+      - meetings_pgdata:/var/lib/postgresql/data
+    networks:
+      - meeting-network
+
+  backend:
+    build:
+      context: ./backend
+    container_name: meetings-backend
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/meetings
+      SPRING_DATASOURCE_USERNAME: meetings_user
+      SPRING_DATASOURCE_PASSWORD: meetings_pass
+
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      AWS_REGION: ${AWS_REGION}
+      AWS_S3_BUCKET: ${AWS_S3_BUCKET}
+
+    depends_on:
+      - postgres
+    networks:
+      - meeting-network
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_BASE_URL: http://localhost:8080
+    container_name: meetings-frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+    networks:
+      - meeting-network
+
+volumes:
+  meetings_pgdata:
+
+networks:
+  meeting-network:
+    driver: bridge
