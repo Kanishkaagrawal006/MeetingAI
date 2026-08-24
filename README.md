@@ -700,6 +700,9 @@ When optional information is unavailable, the application displays a meaningful 
 * Database credentials are configurable through environment variables.
 * Frontend `VITE_*` variables must never contain private API credentials because they are exposed to the browser.
 
+#DemoVideo
+https://drive.google.com/file/d/1lSYJXSxyix1bNl2mydaHUxs6FTnpYUzQ/view?usp=sharing
+
 
 # Author
 
