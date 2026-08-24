@@ -700,57 +700,6 @@ When optional information is unavailable, the application displays a meaningful 
 * Database credentials are configurable through environment variables.
 * Frontend `VITE_*` variables must never contain private API credentials because they are exposed to the browser.
 
----
-
-# Future Improvements
-
-Possible future improvements include:
-
-* User authentication
-* Speaker identification
-* Speaker diarization
-* Search across meeting transcripts
-* Meeting tags and categories
-* Calendar integration
-* PDF summary export
-* DOCX export
-* Email summary delivery
-* Real-time transcription
-* Cloud deployment
-* Role-based access control
-
----
-
-# Demo
-
-A demonstration video should show the complete workflow:
-
-```text
-1. Open MeetingAI
-2. Upload meeting audio
-3. Show processing status
-4. Wait for transcription
-5. Generate AI summary
-6. View summary
-7. View key decisions
-8. View action items
-9. View risks
-10. Read transcript
-11. Download summary
-12. Download transcript
-```
-
-**Demo Video:**
-*Add demo video link here.*
-
----
-
-# Repository
-
-**GitHub:**
-*Add GitHub repository link here.*
-
----
 
 # Author
 
